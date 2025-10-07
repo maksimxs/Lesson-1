@@ -5,12 +5,15 @@ using TMPro;
 
 public class Collectible : MonoBehaviour
 {
+    public ParticleSystem pickupParticles;
     public int coins = 0;
+
     void OnTriggerEnter(Collider other)
     {
         // Проверяем, что это игрок
         if (other.TryGetComponent<PlayerController>(out var player))
         {
+            pickupParticles.Play();
             // Уничтожаем текущий объект
             Destroy(gameObject);
 
